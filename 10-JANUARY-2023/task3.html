@@ -15,6 +15,14 @@
         body{
             font-family: 'Poppins', sans-serif;
         }
+
+        th, td {
+            border-style: dotted;
+        }
+
+        td{
+            border-top: none;
+        }
     </style>
     <body>
         <header>
@@ -51,16 +59,16 @@
             <section>
                 <ul>
                     <li>
-                        <a href="./index2.html">LINK 1</a>
+                        <a href="./task2.html">LINK 1</a>
                     </li>
                     <li>
-                        <a href="./index2.html">LINK 2</a>
+                        <a href="./task2.html">LINK 2</a>
                     </li>
                     <li>
-                        <a href="./index2.html">LINK 3</a>
+                        <a href="./task2.html">LINK 3</a>
                     </li>
                     <li>
-                        <a href="./index2.html">LINK 4</a>
+                        <a href="./task2.html">LINK 4</a>
                     </li>
                 </ul>
             </section>
@@ -72,12 +80,24 @@
         <fieldset>
             <legend><i>Demonstration for form/ fieldset/ button/ input tag in html5</i></legend>
             <form action="./index1.html" method="post">
-                <label for="name">Input your name</label>
-                <input type="text" name="name"/>
+                <label for="name">Input your username</label>
+                <input type="text" name="username"/>
+                    <br/>
+                <label for="name">Input your first name</label>
+                <input type="text" name="first_name"/>
+                    <br/>
+
+                <label for="name">Input your last name</label>
+                <input type="text" name="last_name"/>
+                    <br/>
 
                 <label>Input your email</label>
                 <input type="email" name="email"/>
-
+                    <br/>
+                    
+                <label>Input your DOB</label>
+                <input type="ema" name="email"/>
+                    <br/>
                 <button>Submit</button>
 
             </form>
@@ -87,9 +107,17 @@
         <br/>
 
         <fieldset>
+            <legend><i>Demonstration for image tag</i></legend>
+            <img src="https://codestoresolutions.com/wp-content/uploads/2020/03/course_physics_portfolio_feat.jpg"/>
+        </fieldset>
+        
+        <br/>
+        <br/>
+
+        <fieldset>
             <legend><i>Demonstration for table/ thead/ tbody/ th/ tr/ td tag in html5</i></legend>
 
-            <table>
+            <table >
                 <thead>
                     <th>First name</th>
                     <th>Last name</th>
@@ -121,14 +149,37 @@
         <footer>
             <fieldset>
                 <legend><i>Demonstration for footer/ textarea tag in html5</i></legend>
-            <legend>Contact Us</legend>
-            <textarea></textarea>
-            <button>Submit message</button>
+
+                <section>
+                    <legend>Your email:</legend>
+                    <input type="email"/>
+                        
+                    <legend>Message</legend>
+                    <textarea></textarea>
+                    <br/>
+                    <button>Submit message</button>
+                </section>
+
+                <section>
+                    <ul>
+                        <li>
+                            <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/" target="_blank">Twitter</a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+                        </li>
+                        <li>
+                            <a href="https://in.pinterest.com/" target="_blank">Pinterest</a>
+                        </li>
+                    </ul>
+                </section>
+ 
+            </fieldset>
         </footer>
 
-        <br/>
-        <hr/>
-        <br/>
 
     </body>
 </html>

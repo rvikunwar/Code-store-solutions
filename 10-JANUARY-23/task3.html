@@ -18,36 +18,36 @@
     </style>
     <body>
         <header>
-            <h4><i>Demonstration for header tag in html5</i></h4>
-            <ul>
-                <li>
-                    <h1>H1 TAG</h1>
-                </li>
-                <li>
-                    <h2>H2 TAG</h2>
-                </li>
-                <li>
-                    <h3>H1 TAG</h3>
-                </li>
-                <li>
-                    <h4>H1 TAG</h4>
-                </li>
-                <li>
-                    <h5>H1 TAG</h5>
-                </li>
-                <li>
-                    <h6>H1 TAG</h6>
-                </li>
-            </ul>
-
+            <fieldset>
+                <legend><i>Demonstration for header tag (h1/h2/h3/h4/h5/h6) in html5</i></legend>
+                <ul>
+                    <li>
+                        <h1>H1 TAG</h1>
+                    </li>
+                    <li>
+                        <h2>H2 TAG</h2>
+                    </li>
+                    <li>
+                        <h3>H1 TAG</h3>
+                    </li>
+                    <li>
+                        <h4>H1 TAG</h4>
+                    </li>
+                    <li>
+                        <h5>H1 TAG</h5>
+                    </li>
+                    <li>
+                        <h6>H1 TAG</h6>
+                    </li>
+                </ul>
+            </fieldset>
         </header>
 
         <br/>
-        <hr/>
         <br/>
 
-        <section>
-            <h4><i>Demonstration for anchor/ ul/ li tag in html5</i></h4>
+        <fieldset>
+            <legend><i>Demonstration for anchor/ ul/ li tag in html5</i></legend>
             <section>
                 <ul>
                     <li>
@@ -64,29 +64,30 @@
                     </li>
                 </ul>
             </section>
-        </section>
+        </fieldset>
 
         <br/>
-        <hr/>
         <br/>
 
-        <section>
-            <h4><i>Demonstration for form/ fieldset/ button/ input tag in html5</i></h4>
+        <fieldset>
+            <legend><i>Demonstration for form/ fieldset/ button/ input tag in html5</i></legend>
             <form action="./index1.html" method="post">
-                <fieldset>
-                    <legend>Input your name</legend>
-                    <input type="text" name="name"/>
-                    <button>Submit</button>
-                </fieldset>
+                <label for="name">Input your name</label>
+                <input type="text" name="name"/>
+
+                <label>Input your email</label>
+                <input type="email" name="email"/>
+
+                <button>Submit</button>
+
             </form>
-        </section>
+        </fieldset>
         
         <br/>
-        <hr/>
         <br/>
 
-        <section>
-            <h4><i>Demonstration for table/ thead/ tbody/ th/ tr/ td tag in html5</i></h4>
+        <fieldset>
+            <legend><i>Demonstration for table/ thead/ tbody/ th/ tr/ td tag in html5</i></legend>
 
             <table>
                 <thead>
@@ -112,14 +113,14 @@
                     </tr>
                 </tbody>
             </table>
-        </section>
+        </fieldset>
 
         <br/>
-        <hr/>
         <br/>
 
         <footer>
-            <h4><i>Demonstration for footer/ textarea tag in html5</i></h4>
+            <fieldset>
+                <legend><i>Demonstration for footer/ textarea tag in html5</i></legend>
             <legend>Contact Us</legend>
             <textarea></textarea>
             <button>Submit message</button>

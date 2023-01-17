@@ -30,27 +30,38 @@
 // programmer1.describe()
 
 
-class Animal {
-    constructor(_name){
-        this.name = _name;
-    }
+// class Animal {
+//     constructor(_name){
+//         this.name = _name;
+//     }
 
-    makeSound() {
-        console.log("Generic animal sound!!")
-    }
+//     makeSound() {
+//         console.log("Generic animal sound!!")
+//     }
+// }
+
+
+// class Dog extends Animal{
+//     constructor(name){
+//         super(name);
+//     }
+
+//     makeSound() {
+//         console.log("Boof! Boof!"); //OVERWRITES THE METHOD OVER PARENT CLASS MEMBER
+//     }
+// }
+
+
+// const a1 = new Animal()
+// const b1 = new Dog()
+let a=10;
+
+function b(c){
+    c++;
+    return c
 }
 
-
-class Dog extends Animal{
-    constructor(name){
-        super(name);
-    }
-
-    makeSound() {
-        console.log("Boof! Boof!"); //OVERWRITES THE METHOD OVER PARENT CLASS MEMBER
-    }
-}
+a = b(a)
 
 
-const a1 = new Animal()
-const b1 = new Dog()
+console.log(a)

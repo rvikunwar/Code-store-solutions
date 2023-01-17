@@ -1,0 +1,26 @@
+#id-example{
+    padding: 10px; 
+    margin-bottom: 10px;
+    padding: 10px 20%;
+
+}
+
+.class-example{
+    padding: 10px; 
+    margin-bottom: 10px;
+    padding: 10px 20%;
+
+}
+
+p{
+    border: 1px solid black;
+    padding: 10px 20%;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+*{
+    font-family: 'Poppins', sans-serif;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter form</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+</head>
+
+<style>
+
+    html{
+        scroll-behavior: smooth;
+    }
+    body{
+        font-family: 'Poppins', sans-serif;
+        padding: 10px 20%;
+    }
+
+</style>
+
+
+<body>
+
+    <form id="form" action="#" method="post" onsubmit="filterForm(); return false;">
+        <fieldset>
+            <legend>Select a price range</legend>
+
+            <label for="minPrice">Minimun Price:</label>
+            <input type="number" id="minPrice" name="minPrice" value=0 />
+
+            <label for="maxPrice">Maximum Price:</label>
+            <input type="number" id="maxPrice" name="maxPrice" value=5000 />
+            <input type="submit">
+            <br/>
+        </fieldset>
+
+    </form>
+    <section id="output">
+
+    </section>
+    <script src="./data.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

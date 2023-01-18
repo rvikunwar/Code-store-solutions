@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Flexbox</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <nav>
+        <h1>Sass</h1>
+        <ul>
+            <li><a href="https://www.w3schools.com/sass/default.php" target="_blank">Website</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <article class="desc">
+            Sass is a stylesheet language that’s compiled to CSS. It allows you to use variables, nested rules, mixins, functions, and more, all with a fully CSS-compatible syntax. Sass helps keep large stylesheets well-organized and makes it easy to share design within and across projects.
+        </article>
+
+        <section class="points">
+            <ul>
+                <li>
+                    If you’re looking for an introduction to Sass, check out the tutorial.
+                </li>
+
+                <li>
+                    If you want to look up a built-in Sass function, look no further than the built-in module reference.
+                </li>
+
+                <li>
+                    If you’re calling Sass from JavaScript, you may want the JS API documentation.
+                </li>
+
+                <li>
+                    Or the Dart API documentation if you’re calling it from Dart.
+                </li>
+
+                <li>
+                    Otherwise, use the table of contents for the language reference!
+                </li>
+            </ul>
+        </section>
+
+        <article class="desc-1">
+            The SCSS syntax uses the file extension .scss. With a few small exceptions, it’s a superset of CSS, which means essentially all valid CSS is valid SCSS as well. Because of its similarity to CSS, it’s the easiest syntax to get used to and the most popular.
+            The indented syntax was Sass’s original syntax, and so it uses the file extension .sass. Because of this extension, it’s sometimes just called “Sass”. The indented syntax supports all the same features as SCSS, but it uses indentation instead of curly braces and semicolons to describe the format of the document.
+
+In general, any time you’d write curly braces in CSS or SCSS, you can just indent one level deeper in the indented syntax. And any time a line ends, that counts as a semicolon. There are also a few additional differences in the indented syntax that are noted throughout the reference.
+When Sass encounters invalid syntax in a stylesheet, parsing will fail and an error will be presented to the user with information about the location of the invalid syntax and the reason it was invalid.
+
+Note that this is different than CSS, which specifies how to recover from most errors rather than failing immediately. This is one of the few cases where SCSS isn’t strictly a superset of CSS. However, it’s much more useful to Sass users to see errors immediately, rather than having them passed through to the CSS output.
+
+The location of parse errors can be accessed through implementation-specific APIs. For example, in Dart Sass you can access SassException.span, and in Node Sass’s and Dart Sass’s JS API you can access the file, line, and column properties.
+
+Comments in SCSS work similarly to comments in other languages like JavaScript. Single-line comments start with //, and go until the end of the line. Nothing in a single-line comment is emitted as CSS; as far as Sass is concerned, they may as well not exist. They’re also called silent comments, because they don’t produce any CSS.
+
+Multi-line comments start with /* and end at the next */. If a multi-line comment is written somewhere that a statement is allowed, it’s compiled to a CSS comment. They’re also called loud comment, by contrast with silent comments. A multi-line comment that’s compiled to CSS may contain interpolation, which will be evaluated before the comment is compiled.
+
+By default, multi-line comments be stripped from the compiled CSS in compressed mode. If a comment begins with /*!, though, it will always be included in the CSS output.
+
+        </article>
+    </main>
+
+    <footer>
+        <article>Current Releases:
+            Dart Sass 1.57.1
+            LibSass 3.6.5
+            Ruby Sass ⚰
+            Implementation Guide</article>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+* {
+  font-family: "Poppins", sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+nav {
+  background-color: aquamarine;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+nav h1 {
+  cursor: pointer;
+}
+nav h1:hover {
+  text-decoration: underline;
+}
+nav ul {
+  list-style: none;
+}
+nav ul li {
+  cursor: pointer;
+}
+
+a:link {
+  color: #FF0000;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+}
+
+/* mouse over link */
+a:hover {
+  color: #0000FF;
+}
+
+/* selected link */
+a:active {
+  color: black;
+}
+
+.desc {
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.desc::-moz-selection {
+  color: white;
+  background-color: #313131;
+}
+
+.desc::selection {
+  color: white;
+  background-color: #313131;
+}
+
+.points {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.points ul {
+  list-style: none;
+}
+.points ul li {
+  text-align: center;
+  font-size: 13px;
+}
+
+.desc-1 {
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  background-color: #bf4080;
+  position: fixed;
+  bottom: 0px;
+}
+footer article {
+  color: white;
+  padding: 20px;
+}/*# sourceMappingURL=style.css.map */

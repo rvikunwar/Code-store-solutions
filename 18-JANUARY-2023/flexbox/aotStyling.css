@@ -1,0 +1,64 @@
+* {
+  font-family: "Poppins", sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+nav {
+  background-color: #AFDFFE;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+header {
+  padding-left: 5%;
+  padding-right: 5%;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+
+header article {
+  text-align: center;
+  font-size: 13px;
+}
+
+#character_list {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+#character_list section {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  width: 20%;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+#character_list section img {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+}
+#character_list section h3:hover {
+  text-decoration: underline;
+}
+#character_list section article {
+  font-size: 11px;
+}
+
+@media screen and (max-width: 1000px) {
+  #character_list section {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 440px) {
+  #character_list section {
+    width: 90%;
+  }
+}/*# sourceMappingURL=aotStyling.css.map */

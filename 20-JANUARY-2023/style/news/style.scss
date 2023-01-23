@@ -1,0 +1,16 @@
+.header-title{
+    min-height: 50vh;
+}
+
+.news-content{
+    padding: 30px;
+}
+.news-card{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    article{
+        font-size: 13px;
+    }
+}

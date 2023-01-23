@@ -38,3 +38,6 @@ images.forEach((item) => {
         this.style.filter = 'grayscale(0%)';
     });
 })
+
+window.onunload = function(){ window.scrollTo(0,0); }
+

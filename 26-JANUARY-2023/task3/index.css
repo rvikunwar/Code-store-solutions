@@ -1,0 +1,25 @@
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#bulb {
+    width: 150px;
+    height: 200px;
+}
+
+#bulb.on {
+    filter: brightness(1);
+}
+
+#bulb.off {
+    filter: brightness(0);
+}
+
+button {
+    padding: 6px 5px;
+    font-size: 14px;
+    background-color: aquamarine;
+}

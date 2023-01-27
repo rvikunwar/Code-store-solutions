@@ -15,7 +15,7 @@ body{
 }
 
 #bulb.off {
-    filter: brightness(0);
+    filter: brightness(0.5);
 }
 
 button {

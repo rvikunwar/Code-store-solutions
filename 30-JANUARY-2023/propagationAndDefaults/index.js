@@ -14,7 +14,7 @@ child.onclick = function(e) {
     console.log('Stopped the propagation'); 
 };
 
-// this message will never be render
+// this message will never be render . . .
 child.parentNode.onclick = function(e) { 
     console.log('This message will never get rendered!'); 
 };

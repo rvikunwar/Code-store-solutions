@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css"/>
+    <script src="./index.js"></script>
+</head>
+
+<body>
+    <h1>Travel Agency</h1>
+    <label for="from">From:</label>
+    <select id="from" onchange="disableCity('from')">
+        <option disabled selected>None</option>
+        <script>
+            for (var i = 0; i < cities.length; i++) {
+                document.write("<option value='" + cities[i] + "'>" + cities[i] + "</option>");
+            }
+        </script>
+    </select>
+    <br>
+    <label for="to">To:</label>
+    <select id="to" onchange="disableCity('to')">
+        <option disabled selected>None</option>
+        <script>
+            for (var i = 0; i < cities.length; i++) {
+                document.write("<option value='" + cities[i] + "'>" + cities[i] + "</option>");
+            }
+        </script>
+    </select>
+    <br>
+    <button onclick="addData()">Add Route</button>
+    <br>
+    <h2>Routes:</h2>
+    <ul id="route"></ul>
+
+</body>
+
+</body>
+</html>
+

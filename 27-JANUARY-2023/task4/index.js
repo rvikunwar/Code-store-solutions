@@ -1,54 +1,48 @@
+var cities = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose"];
 
-    // JavaScript list of cities
-    var cities = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose"];
+function disableCity() {
+    var from = document.getElementById("from").value;
+    var to = document.getElementById("to").value;
 
-    // Get references to the "from" and "to" dropdown elements
-    var fromCitySelect = document.getElementById("from-city");
-    var toCitySelect = document.getElementById("to-city");
-
-    // Function to populate the dropdown menus with options
-    function populateDropdowns() {
-        for (var i = 0; i < cities.length; i++) {
-            var fromOption = document.createElement("option");
-            fromOption.value = cities[i];
-            fromOption.text = cities[i];
-            console.log(fromOption, 'form')
-            fromCitySelect.appendChild(fromOption);
-
-            var toOption = document.createElement("option");
-            toOption.value = cities[i];
-            toOption.text = cities[i];
-            toCitySelect.appendChild(toOption);
-        }
+    if (from == to) {
+        alert("You cannot travel from your own city!");
+        document.getElementById("from").value = "None";
+        document.getElementById("to").value = "None";
     }
 
-    // Call the function to populate the dropdowns
-    populateDropdowns();
+    for (var i = 0; i < cities.length; i++) {
+        console.log(from, '==', cities[i])
+        if (cities[i] == from) {
+            // console.log(document.getElementById("to").options[i+1])
+            document.getElementById("to").options[i+1].disabled = true;
+        } else if (cities[i] == to) {
+            document.getElementById("from").options[i+1].disabled = true;
+        } else {
+            document.getElementById("to").options[i+1].disabled = false;
+            document.getElementById("from").options[i+1].disabled = false;
 
-    // Add event listeners to the "from" and "to" dropdown elements
-    fromCitySelect.addEventListener("change", function() {
-        var selectedFromCity = this.value;
-        for (var i = 0; i < toCitySelect.options.length; i++) {
-            if (toCitySelect.options[i].value === selectedFromCity) {
-                toCitySelect.options[i].classList.add("disabled");
-                toCitySelect.options[i].disabled = true;
-            } else {
-                toCitySelect.options[i].classList.remove("disabled");
-                toCitySelect.options[i].disabled = false;
-            }
         }
-    });
+    }
+}
 
-    toCitySelect.addEventListener("change", function() {
-        var selectedToCity = this.value;
-        for (var i = 0; i < fromCitySelect.options.length; i++) {
-            if (fromCitySelect.options[i].value === selectedToCity) {
-                fromCitySelect.options[i].classList.add("disabled");
-                fromCitySelect.options[i].disabled = true;
-            } else {
-                fromCitySelect.options[i].classList.remove("disabled");
-                fromCitySelect.options[i].disabled = false;
-            }
-        }
-    })
-    
+function addData() {
+    var from = document.getElementById("from").value;
+    var to = document.getElementById("to").value;
+    var route = document.getElementById("route");
+
+    // console.log(from, to)
+    if(from === 'None' || to === 'None' || from == "" || to == ""){
+        alert("Please select a source and destination.");
+        return;
+    }
+
+    var existingRoutes = route.innerHTML;
+    if (existingRoutes.indexOf(from + " - " + to) != -1) {
+        alert("Route already added.");
+        return;
+    }
+
+    var newRoute = document.createElement("li");
+    newRoute.innerHTML = from + " - " + to;
+    route.appendChild(newRoute);
+}

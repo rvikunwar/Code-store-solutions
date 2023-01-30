@@ -1,9 +1,10 @@
-var cities = ["New York", "Los Angeles", "Chicago", "Kolkata", "Chennai", "Mumbai", "Jaipur", "San Diego", "Dallas", "San Jose"];
+var cities = ["Surat", "Hyderabad", "Chandigarh", "Kolkata", "Chennai", 
+    "Mumbai", "Jaipur", "Pune", "Ahmedabad", "Bengaluru"];
 var routesArray = []
 
 function disableCity() {
-    var from = document.getElementById("from").value;
-    var to = document.getElementById("to").value;
+    let from = document.getElementById("from").value;
+    let to = document.getElementById("to").value;
     let filteredToCity;
     let filteredFromCity;
 
@@ -21,7 +22,7 @@ function disableCity() {
 
     // console.log(filteredFromCity, filteredToCity)
 
-    for (var i = 0; i < cities.length; i++) {
+    for (let i = 0; i < cities.length; i++) {
         // console.log(from, '==', cities[i])
         if(filteredFromCity){
             filteredFromCity.forEach((city) => {
@@ -49,9 +50,9 @@ function disableCity() {
 }
 
 function addData() {
-    var from = document.getElementById("from").value;
-    var to = document.getElementById("to").value;
-    var route = document.getElementById("route");
+    let from = document.getElementById("from").value;
+    let to = document.getElementById("to").value;
+    let route = document.getElementById("route");
 
     // console.log(from, to)
     if(from === 'None' || to === 'None' || from == "" || to == ""){
@@ -59,7 +60,7 @@ function addData() {
         return;
     }
 
-    var existingRoutes = route.innerHTML;
+    let existingRoutes = route.innerHTML;
     if (existingRoutes.indexOf(from + " - " + to) != -1) {
         alert("Route already added.");
         return;
@@ -70,13 +71,13 @@ function addData() {
         to
     })
 
-    var newRoute = document.createElement("li");
+    let newRoute = document.createElement("li");
     newRoute.innerHTML = from + " - " + to;
     route.appendChild(newRoute);
     document.getElementById("from").value = "None";
     document.getElementById("to").value = "None";
 
-    for (var i = 0; i < cities.length; i++) {
+    for (let i = 0; i < cities.length; i++) {
         document.getElementById("to").options[i+1].disabled = false;
         document.getElementById("from").options[i+1].disabled = false;
     }

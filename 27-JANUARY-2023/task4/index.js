@@ -1,5 +1,3 @@
-var cities = ["Surat", "Hyderabad", "Chandigarh", "Kolkata", "Chennai", 
-    "Mumbai", "Jaipur", "Pune", "Ahmedabad", "Bengaluru"];
 var routesArray = []
 
 function disableCity() {

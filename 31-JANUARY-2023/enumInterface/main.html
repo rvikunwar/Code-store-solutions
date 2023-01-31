@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css"/>
+</head>
+
+<body>
+    <h1>ENUM - Mouse event listeners</h1>
+    <div class="mouse-events">
+        <button onclick="handleMouseAction(0)">On click</button>
+
+        <button oncontextmenu="handleMouseAction(1)">On context menu</button>
+
+        <button ondblclick="handleMouseAction(2)">On double click</button>
+
+        <button onmousedown="handleMouseAction(3)">On mouse down</button>
+
+        <button onmouseenter="handleMouseAction(4)">On mouse enter</button>
+
+        <button onmouseleave="handleMouseAction(5)">On mouse leave</button>
+
+        <button onmousemove="handleMouseAction(6)">On mouse move</button>
+
+        <button onmouseout="handleMouseAction(7)">On mouse out</button>
+
+        <button onmouseover="handleMouseAction(8)">On mouse over</button>
+
+        <button onmouseup="handleMouseAction(9)">On mouse up</button>
+    </div>
+
+    <p id="text"></p>
+</body>
+<script src="./index.js"></script>
+</html>
+

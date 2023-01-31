@@ -1,4 +1,6 @@
 var routesArray = []
+var cities = ["Surat", "Hyderabad", "Chandigarh", "Kolkata", "Chennai", 
+"Mumbai", "Jaipur", "Pune", "Ahmedabad", "Bengaluru"];
 
 function disableCity() {
     let from = document.getElementById("from").value;

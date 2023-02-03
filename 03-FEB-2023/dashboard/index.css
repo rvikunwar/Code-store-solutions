@@ -1,0 +1,113 @@
+* {
+    font-family: "Poppins", sans-serif;
+    padding: 0px;
+    margin: 0px;
+    scroll-behavior: smooth;
+}
+
+main{
+    padding: 40px;
+}
+
+
+nav{
+    background-color: #313131;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+nav h1{
+    cursor: pointer;
+}
+
+nav h1:hover{
+    text-decoration: underline;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+}
+
+nav li{
+    cursor: pointer;
+    padding: 10px;
+}
+
+header p{
+    font-size: 14px;
+    padding: 50px;
+    text-align: center;
+}
+
+.chartList{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.chartCard{
+    width: 550px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 70px;
+}
+
+#shadeScreen{
+    display: none;
+    background-color: rgba(0,0,0,0.5);
+    min-height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullscreenChartCard{
+    width: 70%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: absolute;
+    height: 60vh;
+    z-index: 999;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullscreen{
+    color: gray;
+}
+
+#expand{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.chartPlane{
+    padding-top: 35px;
+}
+
+#loader{
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0
+}

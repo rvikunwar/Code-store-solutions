@@ -154,3 +154,4 @@ const getMovies = async () => {
 
 getMovies();
 
+console.log()

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table booking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="./modal.css"/>
+
+    <link rel="stylesheet" href="./index.css"/>
+</head>
+<body>
+
+    <nav class="navbar animated-navbar">
+        <h1 class="navbar-brand">The Dinner Plate</h1>
+        <ul>
+            <li>
+                <a class="nav-link underline-animation" href="./characters.html">Book table</a>
+            </li>
+            <li>
+                <a class="nav-link underline-animation" href="./merchandise.html">About us</a>
+            </li>
+            <li>
+                <a class="nav-link underline-animation" aria-current="page" href="./news.html">Contact us</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <header>
+        <section >
+            <h1 class="animate-up-visibility">Book Your Table at <br/> The Dinner Plate</h1>
+            <p class="animate-up-visibility">Looking for a delicious dining experience? Book your table at The Dinner Plate and enjoy a memorable meal with friends and family. From classic dishes to new and exciting flavors, our menu has something for everyone. Reserve your table today and get ready to indulge in an unforgettable dining experience.</p>
+        </section>
+        
+        <section>
+            <section class="img-section">
+                <img src="./food.png"/>
+            </section>
+        </section>
+    </header>
+
+    <main>
+        <section class="container-card swiper mySwiper">
+            <section class="swiper-wrapper">
+                <section class="swiper-slide">
+                    <img src="./images/poster1.jpg" alt="Poster 1">
+                </section>
+
+                <section class="swiper-slide">
+                    <img src="./images/poster2.jpg" alt="Poster 2">
+                </section>
+
+                <section class="swiper-slide">
+                    <img src="./images/poster3.webp" alt="Poster 3">
+                </section>
+
+                <section class="swiper-slide">
+                    <img src="./images/poster4.jpg" alt="Poster 4">
+                </section>
+            </section>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </section>
+
+        <section class="quote">
+            <h3>Food is more than just sustenance; it has the power to bring people together, evoke emotions, and be a form of art. Every cuisine has its unique history, flavors, and traditions. Food is essential for both physical and emotional health, and has the power to nourish not only our bodies, but also our souls. Whether it's a home-cooked meal or dining out, let's appreciate food for all that it is.</h3>
+            <p>-VUYST HS</p>
+        </section>
+
+
+        <section class="section-body">
+            <h1 class="heading underline-animation">Table At The Dinner Plate</h1>
+            <section id="table_list" class="animated-content">
+    
+            </section>
+
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 id="modal-title">Book a Table</h2>
+                    <form id="booking-form">
+                        <div id="error-message" class="error-message"></div>
+                        <div id="success-message" class="success-message"></div>
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone:</label>
+                            <input type="text" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date:</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Time:</label>
+                            <input type="time" id="time" name="time">
+                        </div>
+                        <div class="form-group">
+                            <label for="party-size">Party Size:</label>
+                            <input type="number" id="party-size" name="party-size">
+                        </div>
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="container-card swiper mySwiper">
+
+            <section class="swiper-wrapper">
+
+                <section class="swiper-slide align-down">
+                    <h3>"Food is not just fuel, it's information. It talks to your DNA and tells it what to do."</h3>
+                    <p>- Dr. Mark Hyman</p>                
+                </section>
+
+                <section class="swiper-slide align-down">
+                    <h3>"Food is symbolic of love when words are inadequate."</h3>
+                    <p> - Alan D. Wolfelt</p>                
+                </section>
+
+                <section class="swiper-slide align-down">
+                    <h3>"Food is not only essential for our survival, but it is also a way to bring people together."</h3>
+                    <p> - Jamie Oliver</p>
+                </section>
+            </section>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <section >
+            <h1>Book Your Table at <br/> The Dinner Plate</h1>
+            <p>Looking for a delicious dining experience? Book your table at The Dinner Plate and enjoy a memorable meal with friends and family. From classic dishes to new and exciting flavors, our menu has something for everyone. Reserve your table today and get ready to indulge in an unforgettable dining experience.</p>
+            <section>
+                <a><i class="fa-brands fa-facebook"></i></a>
+                <a><i class="fa-brands fa-instagram"></i></a>
+                <a><i class="fa-brands fa-twitter"></i></a>
+                <a><i class="fa-brands fa-amazon"></i></a>
+                <a><i class="fa-brands fa-linkedin"></i></a>
+            </section>
+        </section>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="./modal.js"></script>
+    <script src="./index.js"></script>
+
+</body>
+</html>

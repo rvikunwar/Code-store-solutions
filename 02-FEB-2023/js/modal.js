@@ -3,14 +3,24 @@ let close = document.getElementsByClassName("close")[0];
 let form = document.getElementById("booking-form");
 let errorMessage = document.getElementById("error-message");
 let successMessage = document.getElementById("success-message");
-
+let tableName;
 
 function bookTable(id){
+    tableName = id;
 
+    let tableIndex = tables.findIndex((item) => item.name === id)
+    
+    if(tableIndex === -1){
+        alert("Table is not available")
+        return
+    } else {
+        if(tables[tableIndex]['numberOfTables'] === 0){
+            alert("Table is not available")
+            return 
+        }
+    }
     let title = document.getElementById("modal-title")
     title.textContent = id;
-
-    console.log(id)
     modal.style.display = "block";
 
     close.onclick = function() {
@@ -40,12 +50,17 @@ form.onsubmit = function(event) {
         // Close the modal
         modal.style.display = "none";
 
+        // Clearing input fields
         document.getElementById("name").value = "";
         document.getElementById("email").value = "";
         document.getElementById("phone").value = "";
         document.getElementById("date").value = "";
         document.getElementById("time").value = "";
         document.getElementById("party-size").value = "";
+
+        //for reserving booking
+        let tableIndex = tables.findIndex((item) => item.name === tableName)
+        tables[tableIndex]['numberOfTables']--;
     }, 3000);
     
 

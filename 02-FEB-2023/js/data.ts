@@ -10,14 +10,14 @@ const tables: Array<TableType> = [
         name: "Tables for All Occasions",
         description: "Looking for the perfect table for your special occasion? [Restaurant Name] has tables to suit all needs, from intimate dinner parties to large gatherings. Our warm and welcoming atmosphere, combined with delicious food and exceptional service, will make your event unforgettable. Book your table today and let us make your occasion a celebration to remember.",
         image: 'https://www.qsrmagazine.com/sites/default/files/styles/story_page/public/2020-09/Outsidedining.jpg?itok=lFHMZ-bF',
-        numberOfTables: 2,
+        numberOfTables: 0,
     },
 
     {
         name: "Reserve Your Table Today",
         description: " Whether you're looking for a romantic dinner for two or a celebration with friends and family, [Restaurant Name] is the perfect place for you. Our menu features an array of delicious dishes, expertly prepared by our skilled chefs. We offer a comfortable and relaxed atmosphere, with impeccable service to match. Book your table now and experience dining at its finest.",
         image: 'https://d1k571r5p7i4n1.cloudfront.net/c.1818/large/restaurants_good_for_groups_Homepage.jpg',
-        numberOfTables: 2,
+        numberOfTables: 1,
     },
 
     {

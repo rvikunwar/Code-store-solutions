@@ -24,4 +24,13 @@ router.put('/updateStudentById/:id', studentController.updateStudentById);
 //add subject by student id
 router.put('/addStudentSubject/:id', studentController.addStudentSubjectById);
 
+//update subject
+router.put('/updateSubjectById/:studentId/:subjectId', studentController.updateSubjectById);
+
+//delete student
+router.delete('/deleteStudent/:id', studentController.deleteStudent)
+
+//delete subject
+router.delete('/deleteSubject/:studentId/:subjectId', studentController.deleteSubject)
+
 module.exports = router;

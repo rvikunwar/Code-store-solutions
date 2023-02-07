@@ -16,7 +16,7 @@ module.exports.createStudentDetails = async function(req, res){
         studentData.id = count + 1;
 
         await cd_db.createDocument(collectionName, studentData)
-        return buildResponse(res, "Successfull", 200)
+        return buildObjectResponse(res, { id: count+1, message: "Succesfull"})
 
     } catch(e){
         console.log("Error: " + e);
@@ -72,7 +72,7 @@ module.exports.updateStudentById = async function(req, res){
 
         let businessEntity = { $set: { ...req.body, id: studId }};
         
-        await cd_db.updateDocument(collection, businessEntity, { id: studId });
+        await cd_db.updateDocument(collectionName, businessEntity, { id: studId });
         return buildResponse(res, "Successful", 200);
 
     } catch(e){
@@ -105,10 +105,89 @@ module.exports.addStudentSubjectById = async function(req, res){
         let businessEntity = { $push: { subjects: subjectObj } };
         
         await cd_db.updateDocument(collectionName, businessEntity, { id: studId });
-        return buildResponse(res, "Successful", 200);
+        return buildObjectResponse(res, { id: subjectObj.id, message: "Succesfull"})
 
     } catch(e){
         console.log("Error: ", e)
         return buildResponse(res, 'Internal error', 500)
     }
+}
+
+module.exports.deleteStudent = async function(req, res){
+    let collection = "students";
+    let id = req.params['id'];
+    try{
+        await cd_db.deleteDocument(collection, id)
+        return buildResponse(res, "Succesfully deleted", 200);
+    } catch(err){
+        console.log("Error" + err);
+        return buildResponse(res, "Internal error", 500);
+    }
+}
+
+
+module.exports.deleteSubject = async function(req, res){
+    let collectionName = "students";
+    let studentId = parseInt(req.params['studentId']);
+    let subjectId = parseInt(req.params['subjectId']);
+    try{
+
+        const student = await cd_db.getDocument(collectionName, "id", studentId);
+
+        if(student.length <= 0){
+            return buildResponse(res, "Student with this id is not available", 404)
+        }
+
+        const subjectArray = student[0].subjects.filter((item) => {
+            if(item.id !== subjectId){
+                return item
+            }
+        })
+
+        let businessEntity = { $set: { subjects: subjectArray }};
+        
+        await cd_db.updateDocument(collectionName, businessEntity, { id: studentId });
+        return buildResponse(res, "Successful deleted", 200);
+
+    } catch(err){
+        console.log("Error" + err);
+        return buildResponse(res, "Internal error", 500);
+    }
+}
+
+
+module.exports.updateSubjectById = async function(req, res){
+    let collectionName = "students";
+    let studentId = parseInt(req.params['studentId']);
+    let subjectId = parseInt(req.params['subjectId']);
+
+    if(Object.keys(req.body).length === 0){
+        return buildResponse(res, "Invalid input", 500)
+    }
+
+    try{
+
+        const student = await cd_db.getDocument(collectionName, "id", studentId);
+
+        if(student.length <= 0){
+            return buildResponse(res, "Student with this id is not available", 404)
+        }
+
+        const subjectArray = student[0].subjects.map((item) => {
+            if(item.id === subjectId){
+                return { ...req.body, id: subjectId }
+            }
+            return item
+        })
+
+        let businessEntity = { $set: { subjects: subjectArray }};
+        
+        await cd_db.updateDocument(collectionName, businessEntity, { id: studentId });
+        return buildResponse(res, "Successful updated", 200);
+
+    } catch(err){
+        console.log("Error" + err);
+        return buildResponse(res, "Internal error", 500);
+    }
+
 }

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <link rel="stylesheet" href="index.css"/>
+    <link rel="stylesheet" href="main.css"/>
 </head>
 <body>
 
@@ -17,34 +17,37 @@
         <h1 class="navbar-brand">VILLA'A SCHOOL</h1>
         <ul>
             <li>
-                <a class="nav-link underline-animation" onclick="addStudent()">ADD STUDENT</a>
+                <a class="nav-link underline-animation" onclick="addStudent()">ADD SUBJECT</a>
             </li>
         </ul>
     </nav>
 
+
     <main>
-        <div class="container">            
+        <section class="details" id="details">
+
+        </section>
+
+        <section class="subject-section">
             <table class="table">
                 <tr class="table-header">
                     <th class="header__item">#</th>
-                    <th class="header__item">Name</th>
-                    <th class="header__item">Profile image</th>
-                    <th class="header__item">Class</th>
-                    <th class="header__item">Age</th>
-                    <th class="header__item">Address</th>
-                    <th class="header__item">Roll no</th>
-                    <th class="header__item">Contact no.</th>
+                    <th class="header__item">Subject Name</th>
+                    <th class="header__item">Marks</th>
+                    <th class="header__item">Total</th>
                     <th class="header__item">Action</th>
+
                 </tr>
-                <tbody class="table-content" id="studentTable">	
+                <tbody class="table-content" id="subjectTable">	
 
 
                 </tbody>	
             </table>
-        </div>
+        </section>
     </main>
+    
 
-    <!-- <footer>
+    <footer>
         <section >
             <h1>Villa'A student <br/>Results</h1>
             <p>Behind the scenes, APIs often need to manipulate data as part of their operation. Typically, these data operations—called CRUD for short—run against backend databases. CRUD stands for Create, Read, Update, and Delete, which make up these four fundamental operations.</p>
@@ -56,10 +59,10 @@
                 <a><i class="fa-brands fa-linkedin"></i></a>
             </section>
         </section>
-    </footer> -->
+    </footer>
 
    
-    <script src="index.js"></script>
+    <script src="main.js"></script>
 
 </body>
 </html>

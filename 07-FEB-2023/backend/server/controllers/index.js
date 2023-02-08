@@ -11,6 +11,7 @@ module.exports.createStudentDetails = async function(req, res){
     
     console.log("Created document", JSON.stringify(studentData))
 
+
     try{
         let count = await cd_db.maxId(collectionName);
         studentData.id = count + 1;

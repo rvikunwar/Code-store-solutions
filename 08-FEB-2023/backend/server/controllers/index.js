@@ -14,9 +14,9 @@ module.exports.createStudentDetails = async function(req, res){
 
     const image = req.file.filename
 
-    const values = `(${studentData.name}, '${image}', ${studentData.className}, 
-        ${studentData.age}, ${studentData.address},
-        ${studentData.rollNo}, ${studentData.contactNo})`;
+    const values = `('${studentData.name}', '${image}', '${studentData.className}', 
+        ${studentData.age}, '${studentData.address}',
+        ${studentData.rollNo}, '${studentData.contactNo}')`;
     
     console.log("Created document", req.body, req.file)
 
@@ -27,7 +27,7 @@ module.exports.createStudentDetails = async function(req, res){
         const response = await db.createTuple(tableName, columns, values)
         console.log(response.insertId, 'response data')
 
-        return buildObjectResponse(res, { id: response.insertId, message: "Succesfull"})
+        return buildObjectResponse(res, { id: response.insertId, image, message: "Succesfull"})
 
     } catch(e){
         console.log("Error: " + e);

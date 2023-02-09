@@ -40,7 +40,7 @@ function tableRow({ id, name, marks, total }){
 
 function showProfile(data) {
     return (
-        `<img class="student-img" src='data:image/jpeg;base64,${data.image}'/>
+        `<img class="student-img" src='http://127.0.0.1:3000/${data.image}'/>
         <h3 class="student-name">${data.name}</h3>
         <p class="student-class">Class - ${data.className}</p>
         <p class="student-roll">Roll no - ${data.rollNo}</p>

@@ -1,17 +1,17 @@
 const sql = require("mysql");
 
-const connection = sql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root@123",
-    connectionLimit: 10,
-    database: 'codestore'
-})
-
+let connection;
 
 let cd_db;
 
 async function configureDB() {
+    connection = sql.createConnection({
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASS,
+        connectionLimit: process.env.DB_CONNECTION_LIMIT,
+        database: process.env.DB_DATABASE
+    })
 
     await new Promise((resolve, reject) => {
         connection.connect(function(err) {
@@ -20,12 +20,12 @@ async function configureDB() {
               reject(err)
             }
             resolve();
-            console.log('connected as id/state - ' + connection.threadId + "/" + connection.state);
+            console.log('Connected as id/state - ' + connection.threadId + "/" + connection.state);
         });
     }) 
 }
 
-configureDB();
+
 
 
 class codestoreDB{
@@ -36,6 +36,7 @@ class codestoreDB{
     createTuple = async (tableName, columns, values) => {
 
         try {
+            await configureDB();
             const response = await new Promise((resolve, reject) => {
                 
                 const query = `INSERT INTO ${tableName} ${columns} VALUES ${values};`;
@@ -51,12 +52,14 @@ class codestoreDB{
         } catch (e) {
             throw(e)
         } finally {
-            console.log("Connection successfull");
+            connection.end();
+            console.log("Connection close");
         }
     };
 
     getAllDocuments = async (tableName) => {
         try{
+            await configureDB();
             const response = await new Promise((resolve, reject) => {
                 
                 const query = `SELECT * FROM ${tableName};`;
@@ -72,13 +75,14 @@ class codestoreDB{
         } catch(e){
             console.log("Error: "+ e)
         } finally{
-            console.log("Connection successfull");
-        }
+            connection.end();
+            console.log("Connection close");        }
     }
 
         
     getDocument = async (tableName, field, value) => {
         try{
+            await configureDB();
             const response = await new Promise((resolve, reject) => {
                 
                 const query = `SELECT * FROM ${tableName} WHERE ${field} = ${value};`;
@@ -94,13 +98,14 @@ class codestoreDB{
         } catch(e){
             throw(e)
         } finally{
-            console.log("Connection successfull");
-        }
+            connection.end();
+            console.log("Connection close");        }
     }
 
 
     updateDocument = async (tableName, updatedData, id) => {
         try{
+            await configureDB();
             const response = await new Promise((resolve, reject) => {
                 let query;
 
@@ -130,12 +135,13 @@ class codestoreDB{
         } catch(e){
             throw(e)
         } finally {
-            console.log("Connection Successfull");
-        }
+            connection.end();
+            console.log("Connection close");        }
     }
     
     deleteDocument = async (tableName, id) => {
         try{
+            await configureDB();
             const response = await new Promise((resolve, reject) => {
                 const query = `DELETE FROM ${tableName} WHERE id=${id};`;
        
@@ -149,7 +155,8 @@ class codestoreDB{
         } catch(e){
             console.log("Error: "+ e)
         } finally{
-            console.log("Connection close");
+            connection.end();
+            console.log("Connection close");        
         }
     }
 

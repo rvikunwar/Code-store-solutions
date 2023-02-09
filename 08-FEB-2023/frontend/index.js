@@ -5,25 +5,12 @@ function redirectToStudent(id){
     window.location.href = `./studentPage/main.html?id=${id}`
 }
 
-
-function bufferToBase64(data){
-    let binary = '';
-    let bytes = new Uint8Array(data);
-    let len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-        binary += String.fromCharCode(bytes[i]);
-    }
-    console.log(binary,window.btoa(binary), 'data')
-    return window.btoa(binary);
-}
-
 function tableRow({ id, name, image, className, age, address, rollNo, contactNo }){
-  console.log(image)
     return (
     `<tr class="table-row" id=${id}>		
         <td class="table-data ">${id}</td>
         <td class="table-data active-link" onclick="redirectToStudent(${id})">${name}</td>
-        <td class="table-data">${ image?(`<img src='data:image/jpeg;base64,${bufferToBase64(image.data)}'/>`):'N/A'}</td>
+        <td class="table-data">${ image?(`<img class="profile_image" src='http://127.0.0.1:3000/${image}'/>`):'N/A'}</td>
 
         <td class="table-data">${className}</td>
         <td class="table-data">${age}</td>
@@ -31,7 +18,7 @@ function tableRow({ id, name, image, className, age, address, rollNo, contactNo 
         <td class="table-data">${rollNo}</td>
         <td class="table-data">${contactNo}</td>
         <td class="table-data">
-            <i class="fa-solid fa-pen-to-square edit" onclick='editStudent(${id}, "${name}", "${btoa(image)}", "${className}", ${age}, "${address}", ${rollNo}, "${contactNo}")'></i>
+            <i class="fa-solid fa-pen-to-square edit" onclick='editStudent(${id}, "${name}", "${image}", "${className}", ${age}, "${address}", ${rollNo}, "${contactNo}")'></i>
             <i class="fa-solid fa-trash delete" onclick="deleteStudent(${id})"></i>
         </td>
     </tr>`
@@ -72,7 +59,7 @@ function editTableRow(id, name, image, className, age, address, rollNo, contactN
             <input name="contactNo" id="contactNo_${id}" placeholder="Contact number"  value='${contactNo}'/>
         </div>
         <div class="table-data">
-            <input type="submit" onclick='updateStudent(${id}, "${image}")'/>
+            <input type="submit" onclick='updateStudent(${id})'/>
         </div>
     `
     )
@@ -124,14 +111,14 @@ function updatedTableData( id, name, image, className, age, address, rollNo, con
     `	
         <div class="table-data">${id}</div>
         <div class="table-data active-link">${name}</div>
-        <div class="table-data"><img src='data:image/jpeg;base64,${image}'/></div>
+        <div class="table-data"><img class="profile_image" src='http://127.0.0.1:3000/${image}'/></div>
         <div class="table-data">${className}</div>
         <div class="table-data">${age}</div>
         <div class="table-data">${address}</div>
         <div class="table-data">${rollNo}</div>
         <div class="table-data">${contactNo}</div>
         <div class="table-data">
-            <i class="fa-solid fa-pen-to-square edit" onclick='editStudent(${id}, "${name}", "${className}", ${age}, "${address}", ${rollNo}, "${contactNo}")'></i>
+            <i class="fa-solid fa-pen-to-square edit" onclick='editStudent(${id}, "${name}", "${image}", "${className}", ${age}, "${address}", ${rollNo}, "${contactNo}")'></i>
             <i class="fa-solid fa-trash delete"></i>
         </div>
     `
@@ -145,7 +132,15 @@ function editStudent(id, name, image, className, age, address, rollNo, contactNo
 }
 
 
-function renderUpdatedStudent({ id, name, image, className, age, address, rollNo, contactNo }){
+function renderUpdatedStudent({ id, formdata, image }){
+    const profileData = {};
+
+    for (const [key, value]  of formdata.entries())
+    {
+        profileData[key] = value;
+    }
+
+    const { name, className, age, address, rollNo, contactNo } = profileData;
     let row = document.getElementById(id);
     row.innerHTML = updatedTableData(id, name, image, className, age, address, rollNo, contactNo);
 }
@@ -171,7 +166,7 @@ async function createFileBlob(fileList, data, callback){
     }
 }
 
-function updateStudent(id, image_){
+function updateStudent(id){
     const name = document.getElementById(`name_${id}`).value;
     const className = document.getElementById(`className_${id}`).value;
     const age = document.getElementById(`age_${id}`).value;
@@ -180,33 +175,28 @@ function updateStudent(id, image_){
     const contactNo = document.getElementById(`contactNo_${id}`).value;
     const image = document.getElementById(`image_${id}`);
 
-    const data = { name, className, age, address, rollNo, contactNo };
-
-    function updateStudent(data){
-        fetch(`${url}/updateStudentById/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ...data })
-        })
-        .then((res)=>{
-            renderUpdatedStudent({ ...data, id });
-            console.log(res);
-        })
-    }
+    let formdata = new FormData()
 
     if(image.files.length>0){
-        createFileBlob(image.files, data, updateStudent)
-    } else {
-        fetch(`${url}/updateStudentById/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ...data })
-        })
-        .then((res)=>{
-            renderUpdatedStudent({ ...data, id, image: image_ });
-            console.log(res);
-        })
+        formdata.append('image', image.files[0]) 
     }
+    formdata.append('name', name)
+    formdata.append('className', className) 
+    formdata.append('age', age) 
+    formdata.append('address', address) 
+    formdata.append('rollNo', rollNo) 
+    formdata.append('contactNo', contactNo) 
+
+    fetch(`${url}/updateStudentById/${id}`, {
+        method: 'PUT',
+        body: formdata
+    })
+    .then((res)=>{
+        return res.json()
+    }).then((results) => {
+        renderUpdatedStudent({ formdata, id, image: results.response.image });
+        console.log(results, 'updated response');
+    })
 }
 
 
@@ -240,7 +230,7 @@ function createStudent(){
         let row = document.getElementById('new_row');
         row.remove();
         let table = document.getElementById("studentTable")
-        table.innerHTML += tableRow({ ...data, id: res.response.id})
+        table.innerHTML += tableRow({ ...data, id: res.response.id })
     })
 }
 

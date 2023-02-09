@@ -11,11 +11,14 @@ module.exports.createStudentDetails = async function(req, res){
     const tableName = "students";
 
     const columns = '(name, image, className, age, address, rollNo, contactNo)';
-    const values = `('${studentData.name}', '${studentData.image}', '${studentData.className}', 
-        ${studentData.age}, '${studentData.address}',
-        ${studentData.rollNo}, '${studentData.contactNo}')`;
+
+    const image = req.file.filename
+
+    const values = `(${studentData.name}, '${image}', ${studentData.className}, 
+        ${studentData.age}, ${studentData.address},
+        ${studentData.rollNo}, ${studentData.contactNo})`;
     
-    console.log("Created document", JSON.stringify(studentData))
+    console.log("Created document", req.body, req.file)
 
     try{
         
@@ -79,12 +82,23 @@ module.exports.updateStudentById = async function(req, res){
         return buildResponse(res, "Invalid input", 500)
     }
     try{
+
+        console.log(req.body, req.file)
         const db = codestoreDB.getCodeStoreDBInstance();
 
-        const response = await db.updateDocument(tableName, req.body, studId);
-        console.log(response, req.body)
-        return buildResponse(res, "Successful", 200);
+        const student = await db.getDocument(tableName,"id", studId);
+        console.log(student, "student details")
 
+        let studentEntity = {
+            ...req.body,
+            "image":req.file? req.file.filename: student[0].image
+        }
+
+        console.log(studentEntity, 'student entity')
+
+        await db.updateDocument(tableName, studentEntity, studId);
+
+        return buildObjectResponse(res, { message: 'Successfully updated', image: studentEntity.image })
     } catch(e){
         console.log("Error: ", e)
         return buildResponse(res, 'Internal error', 500)

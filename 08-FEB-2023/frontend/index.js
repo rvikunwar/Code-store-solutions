@@ -1,8 +1,4 @@
 const url = "http://127.0.0.1:3000/v1"
-//1-edit , 2-add
-let globalStatus = 2;
-
-
 
 function redirectToStudent(id){
     window.location.href = `./studentPage/main.html?id=${id}`
@@ -10,85 +6,11 @@ function redirectToStudent(id){
 
 //Update student -- start
 function editStudent(id, name, image, className, age, address, rollNo, contactNo, index){
-    console.log(index,'ss')
+ 
     let row = document.getElementById(id);
     row.innerHTML = renderEditingInputForm(id, name, image, className, age, address, rollNo, contactNo, index);
 }
 
-function renderEditingInputForm(id, name, image, className, age, address, rollNo, contactNo, index ){
-    return (
-    `		
-    <td class="table-data id">${index+1}</td>
-   
-    <td class="table-data ">
-        <input 
-            id="name_${id}" 
-            placeholder="Name" 
-            name="name" 
-            type="text"
-            value='${name}'/>
-    </td>
-    
-    <td class="table-data">
-        <input 
-            id="image_${id}" 
-            placeholder="Profile image" 
-            type="file" 
-            value='${image}' 
-            name="image"
-            accept="image/png, image/jpeg"/>
-    </>
-    
-    <td class="table-data className">
-        <input 
-            id="className_${id}" 
-            placeholder="Class" 
-            name="className"
-            type="text"
-            value='${className}'/>
-    </td>
-    
-    <td class="table-data">
-        <input 
-            id="age_${id}" 
-            placeholder="Age" 
-            name="age" 
-            type="number"
-            value='${age}'/>
-    </td>
-    
-    <td class="table-data">
-        <input 
-            id="address_${id}" 
-            placeholder="Address"  
-            name="address"
-            type="text"
-            value='${address}'/>
-    </td>
-    
-    <td class="table-data">
-        <input 
-            id="rollNo_${id}" 
-            placeholder="Roll no" 
-            name="rollNo"
-            type="number"
-            value='${rollNo}'/>
-    </td>
-    
-    <td class="table-data">
-        <input 
-            name="contactNo" 
-            id="contactNo_${id}" 
-            type="text"
-            placeholder="Contact number"  
-            value='${contactNo}'/>
-    </td>
-    <td class="table-data">
-        <input type="submit" onclick='onUpdateStudentHandler(${id}, ${index})'/>
-    </td>
-    `
-    )
-} 
 
 function onUpdateStudentHandler(id, index){
     const name = document.getElementById(`name`).value;

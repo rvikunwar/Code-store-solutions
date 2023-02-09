@@ -13,7 +13,72 @@
 </head>
 <body>
     <div class="sidebar">
-        <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFf-B627LpT8T6KLY4VlXvIIxm_x6fuhaYBs3cSXyGF7lLYAAB92eG7CYqzT09V07lWD8&usqp=CAU"/>
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/en/7/74/Deakin_University_Logo_2017.svg"/>
+    </div>
+
+    <div class="main-section">
+        <div class="header">
+            <h3>Students</h3>
+            <button onclick="addEditStudentModal('ADD')">Add student</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="">#</th>
+                    <th class="">Name</th>
+                    <th class="">Profile image</th>
+                    <th class="">Class</th>
+                    <th class="">Age</th>
+                    <th class="">Address</th>
+                    <th class="">Roll no</th>
+                    <th class="">Contact no.</th>
+                    <th class="">Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="studentTableBody">
+
+            </tbody>
+
+        </table>
+    </div>
+
+    <div class="toaster" id="toaster">
+        <div class="toaster-message" id="toaster-message">
+            Your message here
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" id="close" onclick="closeAddEditStudentModal()">&times;</span>
+            <h3 class="form-title" id="form-title">Add new student</h3>
+            <form id="form">
+                <label for="name">Name</label>
+                <input id="name" type="text"/>
+
+                <label for="image">Profile image</label>
+                <input id="image" type="file"/>
+
+                <label for="className">Class</label>
+                <input id="className" type="text"/>
+
+                <label for="age">Age</label>
+                <input id="age" type="number"/>
+
+                <label for="address">Address</label>
+                <input id="address" type="text"/>
+
+                <label for="rollNo">Roll No</label>
+                <input id="rollNo" type="number"/>
+
+                <label for="contactNo">Contact number</label>
+                <input id="contactNo" type="text"/>
+
+                <input type="submit""/>
+            </form>
+        </div>
     </div>
     <!-- <nav class="navbar animated-navbar">
         <h1 class="navbar-brand">VILLA'A SCHOOL</h1>

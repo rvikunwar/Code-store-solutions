@@ -117,55 +117,10 @@ main{
   margin-bottom: 5vh;
 }
 
-.table {
-  width: 100%;
-  border: 1px solid #eeeeee;
-}
-
-.table-header {
-  display: flex;
-  width: 100%;
-  background: #000;
-  padding: 18px 0;
-}
-
-.table-row {
-  display: flex;
-  width: 100%;
-  padding: 18px 0;
-}
-
-.table-row:nth-of-type(odd) {
-  background: #eeeeee;
-}
-
-.table-data, .header__item {
-    flex: 1 1 10%;
-  text-align: center;
-}
-
 .profile_image{
     width: 90px;
     object-fit: cover;
     height: 90px;
-}
-
-.header__item {
-  text-transform: uppercase;
-  color: white;
-}
-
-.filter__link {
-  color: white;
-  text-decoration: none;
-  position: relative;
-  display: inline-block;
-  padding-left: 24px;
-  padding-right: 24px;
-}
-
-input{
-    width: 150px;
 }
 
 footer {
@@ -194,6 +149,10 @@ footer section section a {
     cursor: pointer;
 }
 
+body{
+    display: flex;
+    position: relative;
+}
 
 .sidebar{
     min-height: 100vh;
@@ -207,4 +166,159 @@ footer section section a {
 .sidebar .logo{
     width: 100%;
     height: 150px;
+}
+
+.main-section{
+    width: 75%;
+}
+
+.header{
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 3vh;
+    margin-bottom: 10vh;
+}
+
+.header button{
+    background-color: #0C31EA;
+    color: white;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+table{
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse; 
+}
+
+th{
+    font-weight: 500;
+    font-size: 13px;
+    padding: 5px;
+}
+
+tr{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+td{
+    text-align: center;
+    font-size: 12px;
+    padding: 5px;
+}
+
+.edit, .delete{
+    cursor: pointer;
+    margin: 4px;
+}
+
+.profile_image{
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.new_update_row{
+    padding: 40px;
+}
+
+.toaster {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    padding: 20px;
+    background-color: #B81606;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: none;
+    opacity: 0;
+    z-index: 9999;
+}
+
+.toaster-message {
+    font-size: 18px;
+    color: white;
+}
+
+@keyframes fadeOut {
+    0%    { opacity: 1; }
+    20%   { opacity: 1; }
+    75%   { opacity: 1; }
+    100%  { opacity: 0; }
+}
+
+.fadeAnimation{
+    animation: fadeOut 2s;
+}
+
+.modal{
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.4);
+    min-height: 100vh;
+    width: 100%;
+}
+
+.modal-content{
+    background-color: #fff;
+    width: 20%;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+}
+
+.close{
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: -5px;
+    color: gray;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+
+input{
+    width: 90%;
+    padding: 3px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+input::placeholder{
+    font-size: 12px;
+}
+
+input[type = 'submit']{
+    background-color: #313131;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 94%;
+    border-radius: 2px;
+    margin-top: 10px;
+}
+
+input[name='age'], input[name="rollNo"]{
+    width: 30px;
+}
+
+input[name="rollNo"]{
+    width: 50px;
+}
+
+.form-title{
+    margin-bottom: 20px;
 }

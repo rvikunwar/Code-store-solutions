@@ -1,17 +1,27 @@
 const url = "http://127.0.0.1:3000/v1"
 
+window.addEventListener("pageshow", function(event) {
+
+    const msg = localStorage.getItem('message');
+    if(msg){
+        renderMessage(msg, "#06B852")
+        localStorage.removeItem('message')
+    }
+    let accessToken = localStorage.getItem('accessToken')
+    if (!accessToken) {
+      // Redirect to login page if not authenticated
+      window.location.href = './signIn/index.html'
+    }
+});
+
+
+
+
 function redirectToStudent(id){
     window.location.href = `./studentPage/main.html?id=${id}`
 }
 
 //Update student -- start
-function editStudent(id, name, image, className, age, address, rollNo, contactNo, index){
- 
-    let row = document.getElementById(id);
-    row.innerHTML = renderEditingInputForm(id, name, image, className, age, address, rollNo, contactNo, index);
-}
-
-
 function onUpdateStudentHandler(id, index){
     const name = document.getElementById(`name`).value;
     const className = document.getElementById(`className`).value;
@@ -41,15 +51,22 @@ function onUpdateStudentHandler(id, index){
 
     fetch(`${url}/updateStudentById/${id}`, {
         method: 'PUT',
+        headers : {
+            authorization: `BEARER ${localStorage.getItem('accessToken')}`
+        },
         body: formdata
     })
     .then((res)=>{
         return res.json()
     }).then((results) => {
-        renderMessage("Successfully updated student", "#06B852")
-        handleStudentUpdatedData({ formdata, id, image: results.response.image, index });
-        closeAddEditStudentModal()
-        // console.log(results, 'updated response');
+
+        if(results.key === 403){
+            logoutHandler()
+        } else if(results.response){
+            renderMessage("Successfully updated student", "#06B852")
+            handleStudentUpdatedData({ formdata, id, image: results.response.image, index });
+            closeAddEditStudentModal()
+        }
     })
 }
 
@@ -80,7 +97,7 @@ function updatedStudentTableRow( id, name, image, className, age, address, rollN
         <td>${rollNo}</td>
         <td>${contactNo}</td>
         <td>
-            <i class="fa-solid fa-pen-to-square edit" onclick='editStudent('EDIT',${id}, "${name}", "${image}", "${className}", ${age}, "${address}", ${rollNo}, "${contactNo}", ${index})'></i>
+            <i class="fa-solid fa-pen-to-square edit" onclick='addEditStudentModal("EDIT", ${id}, "${name}", "${image}", "${className}", ${age}, "${address}", ${rollNo}, "${contactNo}", ${index})'></i>
             <i class="fa-solid fa-trash delete"></i>
         </td>
     `
@@ -91,7 +108,6 @@ function updatedStudentTableRow( id, name, image, className, age, address, rollN
 
 //Create student -- start
 function addEditStudentModal(status, id, name, image, className, age, address, rollNo, contactNo){
-    console.log(status, 'ssss')
     let modal = document.getElementById("modal")
     let modalTitle = document.getElementById("form-title")
     let form  = document.getElementById("form");
@@ -105,6 +121,9 @@ function addEditStudentModal(status, id, name, image, className, age, address, r
         document.getElementById(`address`).value = address;
         document.getElementById(`rollNo`).value = rollNo;
         document.getElementById(`contactNo`).value = contactNo;
+        document.getElementById("profileImage").src = `http://127.0.0.1:3000/${image}`
+
+        
         form.onsubmit = (e)=>{
             e.preventDefault()
             onUpdateStudentHandler(id, 0)
@@ -121,46 +140,6 @@ function addEditStudentModal(status, id, name, image, className, age, address, r
 
 }
 
-//table row - for adding new student
-function addNewStudentTableRow(){
-    return (
-    `<tr id="new_row" class="new_update_row">		
-        <td class="table-data"></div>
-   
-        <td class="table-data">
-            <input id="name" name="name" placeholder="Name"/>
-        </td>
-
-        <td class="table-data">
-            <input id="image" name="image" placeholder="Profile image" type="file" accept="image/png, image/jpeg"/>
-        </td>
-
-        <td class="table-data">
-            <input id="className" name="className" placeholder="Class"/>
-        </td>
-
-        <td class="table-data">
-            <input id="age"  type="number" placeholder="Age"/>
-        </td>
-
-        <td class="table-data">
-            <input id="address" type="text" placeholder="Address" />
-        </td>
-
-        <td class="table-data">
-            <input id="rollNo"  type="text" placeholder="Roll no"/>
-        </td>
-
-        <td class="table-data">
-            <input name="contactNo" type="text" placeholder="Contact number" id="contactNo"/>
-        </td>
-
-        <td class="table-data">
-            <input type="submit" onclick='onCreateStudentHandler()'/>
-        </td>
-    </tr>`
-    )
-}
 
 function onCreateStudentHandler(){
 
@@ -189,19 +168,25 @@ function onCreateStudentHandler(){
 
     fetch(`${url}/createStudent`, {
         method: 'POST',
+        headers : {
+            authorization: `BEARER ${localStorage.getItem('accessToken')}`
+        },
         body: formdata
     })
     .then((res)=>{
         return res.json();
     })
     .then((res)=>{
-
-        let studentRows = document.getElementsByClassName("studentRow");
-        console.log(studentRows, 'rows')
-        console.log(res)
-        renderMessage("Successfully added student", "#06B852")
-        handleNewStudentData(formdata, res.response.id, res.response.image, studentRows.length)
-        closeAddEditStudentModal()
+        if(res.key === 403){
+            window.location.href = './signIn/index.html'
+        } else if(res.response){
+            let studentRows = document.getElementsByClassName("studentRow");
+            renderMessage("Successfully added student", "#06B852")
+            handleNewStudentData(formdata, res.response.id, res.response.image, studentRows.length)
+            closeAddEditStudentModal()
+        } else {
+            renderMessage("Something went wrong, retry!!", "#B81606")
+        }
     })
 }
 
@@ -242,23 +227,33 @@ function renderStudentInTable({ id, name, image, className, age, address, rollNo
 
 
 function getAllStudents(){
-    fetch(`${url}/getAllStudents`)
+    fetch(`${url}/getAllStudents`,{
+        headers : {
+            authorization: `BEARER ${localStorage.getItem('accessToken')}`
+        }
+    })
     .then((res) => res.json())
     .then((res) => {
-        let table = document.getElementById("studentTableBody")
+        if(res.key === 403){
+            logoutHandler()
+        } else if(res.response){
+            let table = document.getElementById("studentTableBody")
         
-        res.response.forEach((element, index) => {
-            // console.log(element, table)
-            table.innerHTML += renderStudentInTable({ ...element, index })
-        });
-        // console.log(res, "STUDENT DATA")
+            res.response.forEach((element, index) => {
+                // console.log(element, table)
+                table.innerHTML += renderStudentInTable({ ...element, index })
+            });
+        }       
     })
 }
 
 
 function deleteStudent(id){
     fetch(`${url}/deleteStudent/${id}`,{
-        method: "DELETE"
+        method: "DELETE",
+        headers : {
+            authorization: `BEARER ${localStorage.getItem('accessToken')}`
+        },
     })
     .then((res) => res.json())
     .then((res) => {
@@ -330,5 +325,24 @@ function closeAddEditStudentModal() {
     document.getElementById(`rollNo`).value = "";
     document.getElementById(`contactNo`).value = "";  
     document.getElementById(`image`).value = "";  
+    document.getElementById("profileImage").src = "https://t4.ftcdn.net/jpg/01/18/03/35/360_F_118033506_uMrhnrjBWBxVE9sYGTgBht8S5liVnIeY.jpg"
 
+}
+
+function logoutHandler(){
+    localStorage.clear();
+    localStorage.setItem("message", "Logged out!!")
+    window.location.href = './signIn/index.html';
+}
+
+function profileImageHandler(){
+    let image = document.getElementById("image")
+    let imageSrc = document.getElementById("profileImage")
+
+    let reader = new FileReader();
+    reader.readAsDataURL(image.files[0]);
+
+    reader.onload = function (event) {
+        imageSrc.src = event.target.result;
+    };
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student result page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+    <div class="sidebar">
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/en/7/74/Deakin_University_Logo_2017.svg"/>
+    </div>
+
+    <div class="main-section">
+        <div class="signUpModal" id="signUpModal">
+            <div class="signUpModal-content">
+                <h3 class="form-title" id="form-title">Welcome back!!</h3>
+                <p class="instructor">Instructor</p>
+                <form id="form">
+                    <input id="name" name="name" type="text" placeholder="Name"/>
+
+                    <input id="email" name="email" type="email" placeholder="Email"/>
+    
+                    <input id="password" name="password" type="password" placeholder="Password"/>
+    
+                    <input 
+                        id="confirmPassword" 
+                        name="confirmPassword" 
+                        type="password" 
+                        placeholder="Confirm password"/>
+    
+                    <input type="submit""/>
+
+                    <p class="signup-message">Have an account? <a href="../signIn/index.html" class="login-back">Login back</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="toaster" id="toaster">
+        <div class="toaster-message" id="toaster-message">
+            Your message here
+        </div>
+    </div>
+   
+    <script src="index.js"></script>
+
+</body>
+</html>

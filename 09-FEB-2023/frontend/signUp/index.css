@@ -1,0 +1,162 @@
+* {
+    font-family: "Poppins", sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+  
+body {
+    position: relative;
+    display: flex;
+    background-color: black;
+}
+
+main{
+    margin-top: 10vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.active-link{
+    color: #0C31EA;
+    cursor: pointer;
+}
+
+.active-link:hover{
+    text-decoration: underline;
+}
+
+.sidebar{
+    height: 100vh;
+    width: 50%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar .logo{
+    width: 100%;
+    height: 350px;
+}
+
+.main-section{
+    width: 50%;
+    min-height: 100vh;
+}
+
+
+.signUpModal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.signUpModal-content{
+    background-color: #fff;
+    width: 60%;
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+.form-title{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.instructor{
+    text-decoration: underline;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.login-back{
+    color: #0851C1;
+    margin-bottom: 70px;
+}
+
+.signup-message{
+    font-size: 13px;
+}
+
+input{
+    width: 100%;
+    padding: 3px;
+    border-radius: 7px;
+    border: 2px solid black;
+    height: 30px;
+    outline: none;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+input::placeholder{
+    font-size: 17px;
+}
+
+input[type = 'submit']{
+    background-color: #056DC4;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 5px 15px 5px 15px;
+    box-sizing: border-box;
+    height: 40px;
+    font-size: 19px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+input[type = 'file']{
+    border: none;
+}
+
+input[name='age'], input[name="rollNo"]{
+    width: 30px;
+}
+
+input[name="rollNo"]{
+    width: 50px;
+}
+
+.toaster {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    padding: 20px;
+    background-color: #B81606;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: none;
+    opacity: 0;
+    z-index: 9999;
+}
+
+.toaster-message {
+    font-size: 18px;
+    color: white;
+}
+
+@keyframes fadeOut {
+    0%    { opacity: 1; }
+    20%   { opacity: 1; }
+    75%   { opacity: 1; }
+    100%  { opacity: 0; }
+}
+
+.fadeAnimation{
+    animation: fadeOut 2s;
+}

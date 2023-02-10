@@ -19,7 +19,11 @@
     <div class="main-section">
         <div class="header">
             <h3>Students</h3>
-            <button onclick="addEditStudentModal('ADD')">Add student</button>
+            <div>
+                <button class="add-btn" onclick="addEditStudentModal('ADD')">Add student</button>
+                <span class="log-out" onclick="logoutHandler()">Log out</span>
+            </div>
+
         </div>
 
         <table>
@@ -57,16 +61,16 @@
             <form id="form">
                 <label for="name">Name</label>
                 <input id="name" type="text"/>
-
-                <div>
+                
+                <div class="image-row">
                     <div>
-                        
+                        <label for="image">Profile image</label>
+                        <input id="image" type="file" onchange="profileImageHandler()"/>
                     </div>
+                    <img id="profileImage" src="https://t4.ftcdn.net/jpg/01/18/03/35/360_F_118033506_uMrhnrjBWBxVE9sYGTgBht8S5liVnIeY.jpg" class="profileImage"/>
                 </div>
-                <label for="image">Profile image</label>
-                <input id="image" type="file"/>
 
-                <img src="https://t4.ftcdn.net/jpg/01/18/03/35/360_F_118033506_uMrhnrjBWBxVE9sYGTgBht8S5liVnIeY.jpg" class="profileImage"/>
+
 
                 <label for="className">Class</label>
                 <input id="className" type="text"/>

@@ -9,10 +9,6 @@ var swiper = new Swiper(".mySwiper", {
     pagination: {
         el: ".swiper-pagination",
         clickable: true
-    },
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
     }
 });
 var renderTables = document.getElementById("table_list");
@@ -38,3 +34,19 @@ window.addEventListener("scroll", function () {
         }
     });
 });
+function renderMessage(message, color) {
+    var toaster = document.getElementById("toaster");
+    var toasterMsg = document.getElementById("toaster-message");
+    if (toaster !== null && toasterMsg !== null) {
+        toaster.style.display = "block";
+        toaster.style.backgroundColor = color;
+        toaster.classList.add('fadeAnimation');
+        toasterMsg.textContent = message;
+        setTimeout(function () {
+            if (toaster !== null) {
+                toaster.style.display = 'none';
+                toaster.classList.remove('fadeAnimation');
+            }
+        }, 2000);
+    }
+}

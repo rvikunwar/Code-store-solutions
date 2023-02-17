@@ -33,4 +33,5 @@ const tables: Array<TableType> = [
         image: 'https://ak.picdn.net/offset/photos/6013168e6f52af4409fc9a88/medium/offset_1084474.jpg',
         numberOfTables: 2,
     },
+
 ]

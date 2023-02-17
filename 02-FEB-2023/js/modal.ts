@@ -1,8 +1,6 @@
 let modal = document.getElementById("modal");
 let close = document.getElementsByClassName("close")[0];
 let form = document.getElementById("booking-form");
-let errorMessage = document.getElementById("error-message");
-let successMessage = document.getElementById("success-message");
 let tableName: string;
 
 
@@ -10,11 +8,11 @@ function tableValidation(name: string): boolean{
     tableName = name;
     let tableIndex = tables.findIndex((item: TableType) => item.name === name)
     if(tableIndex === -1){
-        alert("Table is not available")
+        renderMessage("Table is not available", "#B81606")
         return false;
     } else {
         if(tables[tableIndex]['numberOfTables'] === 0){
-            alert("Table is not available")
+            renderMessage("Table is not available", "#B81606")
             return false;
         }
     }
@@ -22,7 +20,7 @@ function tableValidation(name: string): boolean{
     return true;
 }
 
-function bookTable(id){
+function bookTable(id: string){
 
     if(!tableValidation(id)) return; //for checking availability of tables
     let title = document.getElementById("modal-title") 
@@ -31,7 +29,7 @@ function bookTable(id){
     }
 
     if(modal !== null){
-        modal.style.display = "block"
+        modal.style.display = "flex"
     }
 
     close.onclick = function() {
@@ -54,36 +52,29 @@ if(form !== null){
         event.preventDefault();
     
         // Validate the form
-        if (!validateForm()) {
+        let msg = validateForm()
+        if (msg !== "") {
+            renderMessage(msg, "#B81606")
             return;
         }
-        if(successMessage !== null){
-            successMessage.style.display = "block";
-            successMessage.innerHTML = "Table booking successful!";
-        }
-    
-        
-        // Hide success message after 3 seconds
-        setTimeout(function() {
-            successMessage !== null && (successMessage.style.display = "none");
-            // Close the modal
-            (modal !== null) && (modal.style.display = "none");
-           
-    
-            // Clearing input fields
-            let ids: Array<string> = [ "name", "email", "phone", "date", "time", "party-size"];
+        renderMessage("Table booking successful!", "#06B852")
 
-            ids.forEach((item)=>{
-                let ele: HTMLElement|null = document.getElementById(item);
-                if(ele !== null && ele instanceof HTMLInputElement){
-                    ele.value = ""
-                }
-            })    
+        modal !== null && (modal.style.display = "none");
 
-            //for reserving booking
-            let tableIndex = tables.findIndex((item: TableType) => item.name === tableName)
-            tables[tableIndex]['numberOfTables']--;
-        }, 2000);    
+        // Clearing input fields
+        let ids: Array<string> = [ "name", "email", "phone", "date", "time", "party-size"];
+
+        ids.forEach((item)=>{
+            let ele: HTMLElement|null = document.getElementById(item);
+            if(ele !== null && ele instanceof HTMLInputElement){
+                ele.value = ""
+            }
+        })  
+
+        //for reserving booking
+        let tableIndex = tables.findIndex((item: TableType) => item.name === tableName)
+        tables[tableIndex]['numberOfTables']--;
+   
     }
 }
 
@@ -125,90 +116,81 @@ function validateForm() {
         partySize_ = parseInt(partySize.value);
     }
 
-    // Check if name is empty
-    if(errorMessage !== null){
-        if (!name) {
-            errorMessage.style.display = "block";
-            errorMessage.innerHTML = "Name is required";
-            return false;
-        }
-        
-        // Check if email is empty
-        if (!email) {
-            errorMessage.style.display = "block";
-            errorMessage.innerHTML = "Email is required";
-            return false;
-        }
-        
-        // Check if email is in correct format
-        let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        if (email_ !== null) {
-            if(!emailRegex.test(email_)){
-                errorMessage.style.display = "block";
-                errorMessage.innerHTML = "Email is not in correct format";
-                return false;
-            }
-        }
-    
-        // Check if phone number is empty
-        if (!phone) {
-            errorMessage.style.display = "block";
-            errorMessage.innerHTML = "Phone number is required";
-            return false;
-        }
-    
-        // Check if phone number is 10 digits
-        if (String(phone_).length !== 10) {
-            errorMessage.style.display = "block";
-            errorMessage.innerHTML = "Phone number should be 10 digits";
-            return false;
-        }
-    
-        // Check if date is empty
-        if (!date) {
-            errorMessage.style.display = "block";
-            errorMessage.innerHTML = "Date is required";
-            return false;
-        }
-        
-        // Check if time is empty
-        if (!time) {
-            errorMessage.style.display = "block";
-            errorMessage.innerHTML = "Time is required";
-            return false;
-        }
-        
-        // Check if date and time are ahead of current date and time
-        let currentDate = new Date();
-        let selectedDate = new Date(date + " " + time);
-        if (selectedDate <= currentDate) {
-            errorMessage.style.display = "block";
-            errorMessage.innerHTML = "Date and time should be ahead of current date and time";
-            return false;
-        }
-    
-            
-        // Check if party size is empty
-        if (!partySize) {
-            errorMessage.style.display = "block";
-            errorMessage.innerHTML = "Party size is required";
-            return false;
-        }
-        
-        // Check if party size is negative
-        if (partySize_ < 0) {
-            errorMessage.style.display = "block";
-            errorMessage.innerHTML = "Party size cannot be negative";
-            return false;
-        }
-            
-        // If all fields are filled, hide the error message and return true
-        errorMessage.style.display = "none";
+    if (!name) {
+        return "Name is required";
     }
     
-    return true;
+    // Check if email is empty
+    if (!email) {
+        return "Email is required";
+    }
+    
+    // Check if email is in correct format
+    let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (email_ !== null) {
+        if(!emailRegex.test(email_)){
+            return "Email is not in correct format";
+        }
+    }
+
+    // Check if phone number is empty
+    if (!phone) {
+        return "Phone number is required";
+    }
+
+    // Check if phone number is 10 digits
+    if (String(phone_).length !== 10) {
+        return "Phone number should be 10 digits";
+    }
+
+    // Check if date is empty
+    if (!date) {
+        return "Date is required";
+    }
+    
+    // Check if time is empty
+    if (!time) {
+        return "Time is required";
+    }
+    
+    // Check if date and time are ahead of current date and time
+    let currentDate = new Date();
+    let selectedDate = new Date(date + " " + time);
+    if (selectedDate <= currentDate) {
+        return "Date and time should be ahead of current date and time";
+    }
+
+    // Check if party size is empty
+    if (!partySize_) {
+        return "Party size is required";
+    }
+    
+    // Check if party size is negative
+    if (partySize_ < 0) {
+        return "Party size cannot be negative";
+    }
+    
+    return "";
 }
         
-        
-        
-        
+
+function renderMessage(message:string, color:string){
+    let toaster = document.getElementById("toaster");
+    let toasterMsg = document.getElementById("toaster-message");
+
+    if(toaster !== null && toasterMsg !== null){
+        toaster.style.display = "block";
+        toaster.style.backgroundColor = color;
+        toaster.classList.add('fadeAnimation')
+
+        toasterMsg.textContent = message;
+    
+        setTimeout(()=>{
+            if(toaster !== null){
+                toaster.style.display = 'none';
+                toaster.classList.remove('fadeAnimation')
+            }
+        }, 2000)
+    }
+}
+

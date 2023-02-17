@@ -10,10 +10,6 @@ let swiper = new Swiper(".mySwiper", {
       el: ".swiper-pagination",
       clickable: true,
     },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
 });
 
 let renderTables = document.getElementById("table_list") as HTMLElement;
@@ -48,4 +44,6 @@ window.addEventListener("scroll", function() {
         }
     })
 });
+
+
 

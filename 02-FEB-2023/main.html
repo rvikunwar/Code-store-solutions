@@ -8,15 +8,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <link rel="stylesheet" href="./css/modal.css"/>
+    <link 
+        rel="stylesheet" 
+        href="./css/modal.css"/>
 
-    <link rel="stylesheet" href="./css/index.css"/>
+    <link 
+        rel="stylesheet" 
+        href="./css/index.css"/>
+
 </head>
 <body>
 
@@ -24,13 +33,13 @@
         <h1 class="navbar-brand">The Dinner Plate</h1>
         <ul>
             <li>
-                <a class="nav-link underline-animation" href="./characters.html">Book table</a>
+                <a class="nav-link underline-animation" href="#section-body">Book table</a>
             </li>
             <li>
-                <a class="nav-link underline-animation" href="./merchandise.html">About us</a>
+                <a class="nav-link underline-animation">About us</a>
             </li>
             <li>
-                <a class="nav-link underline-animation" aria-current="page" href="./news.html">Contact us</a>
+                <a class="nav-link underline-animation" aria-current="page">Contact us</a>
             </li>
         </ul>
     </nav>
@@ -67,10 +76,6 @@
                     <img src="./images/poster4.jpg" alt="Poster 4">
                 </section>
             </section>
-
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
         </section>
 
         <section class="quote">
@@ -79,7 +84,7 @@
         </section>
 
 
-        <section class="section-body">
+        <section class="section-body" id="section-body">
             <h1 class="heading underline-animation">Table At The Dinner Plate</h1>
             <section id="table_list" class="animated-content">
     
@@ -90,8 +95,6 @@
                     <span class="close">&times;</span>
                     <h2 id="modal-title">Book a Table</h2>
                     <form id="booking-form">
-                        <div id="error-message" class="error-message"></div>
-                        <div id="success-message" class="success-message"></div>
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" id="name" name="name">
@@ -150,6 +153,12 @@
 
     </main>
 
+    <div class="toaster" id="toaster">
+        <div class="toaster-message" id="toaster-message">
+            Your message here
+        </div>
+    </div>
+
     <footer>
         <section >
             <h1>Book Your Table at <br/> The Dinner Plate</h1>
@@ -166,8 +175,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="./js/data.js"></script>
-    <script src="./js/modal.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/modal.js"></script>
 
 </body>
 </html>

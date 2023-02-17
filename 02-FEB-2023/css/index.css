@@ -9,14 +9,14 @@ body {
 }
 
 nav {
-    background-color: #87E1DF !important;
+    background-color: #87E1DF;
     display: flex;
     color: white;
     justify-content: space-between;
     align-items: center;
     padding: 19px;
     box-sizing: border-box;
-    z-index: 100000 !important;
+    z-index: 100000;
 }
 
 .navbar-brand{
@@ -43,7 +43,7 @@ nav ul li {
 }
 
 .animated-navbar {
-    position: fixed !important;
+    /* position: fixed !important; */
     top: 0;
     left: 0;
     right: 0;
@@ -238,14 +238,14 @@ header section{
 }
 
 header section h1{
-    margin-top: 30vh;
+    margin-top: 20vh;
     font-size: 60px;
 }
 
 header section .img-section{
     width: 100%;
     display: flex;
-    margin-top: 100px;
+    margin-top: 80px;
     justify-content: center;
 }
 
@@ -365,11 +365,40 @@ main{
     font-size: 17px;
 }
 
-
 .error-message {
     background-color: #ffb3b3;
     color: #9f3a38;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
+}
+
+.toaster {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    padding: 20px;
+    background-color: #B81606;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: none;
+    opacity: 0;
+    z-index: 9999;
+}
+
+.toaster-message {
+    font-size: 18px;
+    color: white;
+}
+
+@keyframes fadeOut {
+    0%    { opacity: 1; }
+    20%   { opacity: 1; }
+    75%   { opacity: 1; }
+    100%  { opacity: 0; }
+}
+
+.fadeAnimation{
+    animation: fadeOut 2s;
 }
